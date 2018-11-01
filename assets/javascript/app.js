@@ -22,11 +22,16 @@ var questionAndAnswers = [
     },
 ];
 
-function ask() {
-    $("#question-placeholder").text(questionAndAnswers[0].question);
+function listAnswers(){
+for (var i=0;i<=3;i++) {
+    $("#answers-placeholder").append("<ul>" + questionAndAnswers[0].possibleAnswers[i] +"</ul>");
+}
 };
 
-ask();
+function displayQandAs() {
+    $("#question-placeholder").text(questionAndAnswers[0].question);
+    listAnswers();
+};
 
 // will contain the timer for every question
 var timer = {
@@ -41,13 +46,21 @@ var timer = {
             clearInterval(setIntervalID);
         };
         console.log(timer.initialTime);
-        $("#timer").html("Time Remaining: " + timer.initialTime-- + " Seconds");
+        $("#timer").text("Time Remaining: " + timer.initialTime-- + " Seconds");
     },
 
 }; 
 
-timer.start();
+function startGame(){
+    timer.start();
+    displayQandAs();
 
+};
+
+$("#start-button").on("click", function(){
+    startGame();
+    $(this).hide();
+});
 
 
 
