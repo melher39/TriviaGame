@@ -20,12 +20,32 @@ var questionAndAnswers = [
     correctAnswer: "Springfield",
     messageGif: "",
     },
+
+    {   
+    question: "What is Homer's middle name?",
+    possibleAnswers: ["Jody", "Junior", "Jay", "John"],
+    correctAnswer: "Jay",
+    messageGif: "",
+    },
 ];
 
 function listAnswers(){
 for (var i=0;i<=3;i++) {
-    $("#answers-placeholder").append("<ul>" + questionAndAnswers[0].possibleAnswers[i] +"</ul>");
+
+    var displayedAnswers = $("<button>");
+
+    displayedAnswers.addClass("btn btn-danger answer-choices");
+
+    displayedAnswers.attr("data-name", questionAndAnswers[0].possibleAnswers[i]);
+
+    displayedAnswers.text(questionAndAnswers[0].possibleAnswers[i]);
+
+    $("#answers-placeholder").append("<ul>",displayedAnswers);
+    
 }
+console.log(questionAndAnswers[0].correctAnswer);
+
+
 };
 
 function displayQandAs() {
@@ -37,13 +57,14 @@ function displayQandAs() {
 var timer = {
     initialTime: 5,
     start: function(){
-            setIntervalID = setInterval(this.count,1000);
+        setIntervalID = setInterval(this.count,1000);
         
     },
 
     count: function(){
         if(timer.initialTime===0){
             clearInterval(setIntervalID);
+            alert("D'oh!")
         };
         console.log(timer.initialTime);
         $("#timer").text("Time Remaining: " + timer.initialTime-- + " Seconds");
@@ -57,11 +78,26 @@ function startGame(){
 
 };
 
+
+
+function playGame(){
+    var buttonValue = $(this).attr("data-name");
+    console.log(buttonValue);
+    if(buttonValue===questionAndAnswers[0].correctAnswer){
+        alert("You are right!!!!");
+    }
+
+    else{
+        alert("Try again!");
+    }
+
+};
+
 $("#start-button").on("click", function(){
     startGame();
     $(this).hide();
 });
 
-
+$(document).on("click", ".answer-choices", playGame);
 
 });
