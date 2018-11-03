@@ -22,69 +22,69 @@ var questionAndAnswers = [
     question: "In what town do The Simpsons live in?",
     possibleAnswers: ["Quahog", "Springfield", "Capital City", "Shelbyville"],
     correctAnswer: "Springfield",
-    messageGif: ""
+    messageGif: "<img src='assets/images/springfield-small.gif' class='img-fluid'/>",
     },
 
     {   
     question: "What is Homer's middle name?",
     possibleAnswers: ["Jody", "Junior", "Jay", "John"],
     correctAnswer: "Jay",
-    messageGif: "",
+    messageGif: "<img src='assets/images/homer-j-small.gif' class='img-fluid'/>",
     },
 
     {   
     question: "In what year did the show make its official debut?",
     possibleAnswers: ["1988", "1989", "1990", "1991"],
     correctAnswer: "1989",
-    messageGif: "",
+    messageGif: "<img src='assets/images/screaming-homer.gif' class='img-fluid'/>",
     },
 
     {   
     question: "Chief Wiggum is the local police klutz. What is his first name?",
     possibleAnswers: ["Jerry", "Chief", "Larry", "Clancy"],
     correctAnswer: "Clancy",
-    messageGif: "",
+    messageGif: "<img src='assets/images/chiefwiggum.gif' class='img-fluid'/>",
     },
 
     {   
     question: "Mr. Burns, the town's pseudo-evil millionaire, has a popular catchphrase. What is it?",
     possibleAnswers: ["D'oh!", "Ay caramba!", "Maginificent...", "Excellent..."],
     correctAnswer: "Excellent...",
-    messageGif: "",
+    messageGif: "<img src='assets/images/mrburns-excellent.gif' class='img-fluid'/>",
     },
 
     {   
     question: "Bart Simpson's voice is played by a woman. Is this...",
     possibleAnswers: ["True", "False"],
     correctAnswer: "True",
-    messageGif: "",
+    messageGif: "<img src='assets/images/ay-caramba.gif' class='img-fluid'/>",
     },
 
     {   
     question: "What is Lisa's musical instrument of choice?",
     possibleAnswers: ["Triangle", "Saxaphone", "Flute", "Harmonica"],
     correctAnswer: "Saxaphone",
-    messageGif: "",
+    messageGif: "<img src='assets/images/lisa-happy.gif' class='img-fluid'/>",
     },
 
     {   
     question: "What is Homer Simpson's annoying next door neighbor's name?",
     possibleAnswers: ["Ned Flanders", "Ted Flanders", "Red Flanders", "Stupid Flanders"],
     correctAnswer: "Ned Flanders",
-    messageGif: "",
+    messageGif: "<img src='assets/images/flanders-small.gif' class='img-fluid'/>",
     },
     {
     question: "Fill in the blank. 'Mmmmmm ________.'",
     possibleAnswers: ["Peanuts", "Candy", "Donuts", "Sweet Apple Pie"],
     correctAnswer: "Donuts",
-    messageGif: "",
+    messageGif: "<img src='assets/images/donuts.gif' class='img-fluid'/>",
     },
 
     {
     question: "IF YOU GET THIS, YOU'RE A TRUE FAN! <br> Maggie Simpson's arch-nemesis is:",
     possibleAnswers: ["Stewie Griffin", "Gerald Samson", "Milhouse Van Houten", "Harold Samson", "Barney Gumble"],
     correctAnswer: "Gerald Samson",
-    messageGif: "",
+    messageGif: "<img src='assets/images/maggie.gif' class='img-fluid'/>",
     }
 ];
 
@@ -172,16 +172,20 @@ function nextQuestion(){
 
 function bridgeMessage(){
 
+    var messageImage = questionAndAnswers[questionCounter].messageGif;
+
     if (questionCounter===questionAndAnswers.length-1){
         // var message = "This is the answer foo!<br>"+ questionAndAnswers[questionCounter].correctAnswer ;
-        $("#answers-placeholder").html(resultMessage);
+        $("#question-placeholder").html(resultMessage);
+        $("#answers-placeholder").html(messageImage);
         setTimeoutID = setTimeout(endGame,3000);
 
     }
 
     else if(questionCounter<questionAndAnswers.length){
         // var message = "This is the answer foo!<br>"+ questionAndAnswers[questionCounter].correctAnswer ;
-        $("#answers-placeholder").html(resultMessage);
+        $("#question-placeholder").html(resultMessage);
+        $("#answers-placeholder").html("<br>"+messageImage);
         setTimeoutID = setTimeout(nextQuestion,3000);
 
     }
@@ -189,11 +193,11 @@ function bridgeMessage(){
 
 
 function startGame(){
+    timer.start();
     correctlyAnswered = 0;
     incorrectlyAnswered = 0;
     unanswered = 0;
     questionCounter = 0;
-    timer.start();
     displayQandAs(questionCounter);
     // clearTimeout(setIntervalID);
 
