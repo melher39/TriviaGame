@@ -22,69 +22,69 @@ var questionAndAnswers = [
     question: "In what town do The Simpsons live in?",
     possibleAnswers: ["Quahog", "Springfield", "Capital City", "Shelbyville"],
     correctAnswer: "Springfield",
-    messageGif: "<img src='assets/images/springfield-small.gif' class='img-fluid'/>",
+    messageGif: "<img src='assets/images/springfield-small.gif'/>",
     },
 
     {   
     question: "What is Homer's middle name?",
     possibleAnswers: ["Jody", "Junior", "Jay", "John"],
     correctAnswer: "Jay",
-    messageGif: "<img src='assets/images/homer-j-small.gif' class='img-fluid'/>",
+    messageGif: "<img src='assets/images/homer-j-small.gif'/>",
     },
 
     {   
     question: "In what year did the show make its official debut?",
     possibleAnswers: ["1988", "1989", "1990", "1991"],
     correctAnswer: "1989",
-    messageGif: "<img src='assets/images/screaming-homer.gif' class='img-fluid'/>",
+    messageGif: "<img src='assets/images/screaming-homer.gif'/>",
     },
 
     {   
     question: "Chief Wiggum is the local police klutz. What is his first name?",
     possibleAnswers: ["Jerry", "Chief", "Larry", "Clancy"],
     correctAnswer: "Clancy",
-    messageGif: "<img src='assets/images/chiefwiggum.gif' class='img-fluid'/>",
+    messageGif: "<img src='assets/images/chiefwiggum.gif'/>",
     },
 
     {   
     question: "Mr. Burns, the town's pseudo-evil millionaire, has a popular catchphrase. What is it?",
     possibleAnswers: ["D'oh!", "Ay caramba!", "Maginificent...", "Excellent..."],
     correctAnswer: "Excellent...",
-    messageGif: "<img src='assets/images/mrburns-excellent.gif' class='img-fluid'/>",
+    messageGif: "<img src='assets/images/mrburns-excellent.gif'/>",
     },
 
     {   
     question: "Bart Simpson's voice is played by a woman. Is this...",
     possibleAnswers: ["True", "False"],
     correctAnswer: "True",
-    messageGif: "<img src='assets/images/ay-caramba.gif' class='img-fluid'/>",
+    messageGif: "<img src='assets/images/ay-caramba.gif'/>",
     },
 
     {   
     question: "What is Lisa's musical instrument of choice?",
     possibleAnswers: ["Triangle", "Saxaphone", "Flute", "Harmonica"],
     correctAnswer: "Saxaphone",
-    messageGif: "<img src='assets/images/lisa-happy.gif' class='img-fluid'/>",
+    messageGif: "<img src='assets/images/lisa-happy.gif'/>",
     },
 
     {   
     question: "What is Homer Simpson's annoying next door neighbor's name?",
     possibleAnswers: ["Ned Flanders", "Ted Flanders", "Red Flanders", "Stupid Flanders"],
     correctAnswer: "Ned Flanders",
-    messageGif: "<img src='assets/images/flanders-small.gif' class='img-fluid'/>",
+    messageGif: "<img src='assets/images/flanders-small.gif'/>",
     },
     {
     question: "Fill in the blank. 'Mmmmmm ________.'",
     possibleAnswers: ["Peanuts", "Candy", "Donuts", "Sweet Apple Pie"],
     correctAnswer: "Donuts",
-    messageGif: "<img src='assets/images/donuts.gif' class='img-fluid'/>",
+    messageGif: "<img src='assets/images/donuts.gif'/>",
     },
 
     {
     question: "IF YOU GET THIS, YOU'RE A TRUE FAN! <br> Maggie Simpson's arch-nemesis is:",
     possibleAnswers: ["Stewie Griffin", "Gerald Samson", "Milhouse Van Houten", "Harold Samson", "Barney Gumble"],
     correctAnswer: "Gerald Samson",
-    messageGif: "<img src='assets/images/maggie.gif' class='img-fluid'/>",
+    messageGif: "<img src='assets/images/maggie.gif'/>",
     }
 ];
 
@@ -106,7 +106,7 @@ var timer = {
             // alert("D'oh!")
         };
         console.log(timer.initialTime);
-        $("#timer").text("Time Remaining: " + timer.initialTime-- + " Seconds");
+        $("#timer").html("Time Remaining: " + timer.initialTime-- + " Seconds");
     },
 
     stop: function(){
@@ -121,7 +121,7 @@ for (var i=0;i<questionAndAnswers[questionCounter].possibleAnswers.length;i++) {
     
     var displayedAnswers = $("<button>");
 
-    displayedAnswers.addClass("btn btn-danger answer-choices");
+    displayedAnswers.addClass("btn btn-danger btn-lg answer-choices text-center");
 
     displayedAnswers.attr("data-name", questionAndAnswers[questionCounter].possibleAnswers[i]);
 
@@ -142,16 +142,15 @@ function displayQandAs(questionCounter) {
 
 function endGame(){
     timer.stop();
-    alert("I'm here!!!!");
 
     var restartGame = $("<button>");
 
-    restartGame.addClass("btn btn-success restart-button");
+    restartGame.addClass("btn btn-success btn-lg restart-button");
     restartGame.text("Start Over");
 
     $("#timer").empty();
 
-    $("#question-placeholder").html("Correct: " + correctlyAnswered + "<br>Incorrent: " + incorrectlyAnswered + "<br>Unanswered: " + unanswered);
+    $("#question-placeholder").html("That's it! Here's How You Did! <br><br>" + "Correct: " + correctlyAnswered + "<br>Incorrect: " + incorrectlyAnswered + "<br>Unanswered: " + unanswered + "<br>");
 
     $("#answers-placeholder").html(restartGame);
 
@@ -177,7 +176,7 @@ function bridgeMessage(){
     if (questionCounter===questionAndAnswers.length-1){
         // var message = "This is the answer foo!<br>"+ questionAndAnswers[questionCounter].correctAnswer ;
         $("#question-placeholder").html(resultMessage);
-        $("#answers-placeholder").html(messageImage);
+        $("#answers-placeholder").html("<br>" + messageImage);
         setTimeoutID = setTimeout(endGame,3000);
 
     }
@@ -185,9 +184,8 @@ function bridgeMessage(){
     else if(questionCounter<questionAndAnswers.length){
         // var message = "This is the answer foo!<br>"+ questionAndAnswers[questionCounter].correctAnswer ;
         $("#question-placeholder").html(resultMessage);
-        $("#answers-placeholder").html("<br>"+messageImage);
+        $("#answers-placeholder").html("<br>" + messageImage);
         setTimeoutID = setTimeout(nextQuestion,3000);
-
     }
 };
 
@@ -199,7 +197,6 @@ function startGame(){
     unanswered = 0;
     questionCounter = 0;
     displayQandAs(questionCounter);
-    // clearTimeout(setIntervalID);
 
 };
 

@@ -1,0 +1,14 @@
+.btn {
+    width:30%;
+}
+
+img{
+    max-width: 30%;
+    height: auto;
+}
+
+body{
+    background-image: url("../images/backgroud.jpg");
+    background-size: cover;
+    /* background-position: center; */
+}
