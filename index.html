@@ -14,45 +14,48 @@
 <body>
 
     <!-- rough outline of the game -->
-    <div class="container">
+    <div class="container mt-5 pb-3">
 
         <div class="row text-center">
             <div class="col-md-12">
-                <h1 id="simpsons-title">The Simpsons Trivia!</h1>
+                <div id="simpsons-title">
+                    <!-- The Simpsons Trivia! -->
+                    <img src="assets/images/simpsons-trivia.jpg" alt="simpsons-trivia">
+                </div>
             </div>
         </div>
 
         <br>
 
-        <div class="row ">
+        <!-- start button displayed when page is first loaded -->
+        <div class="row">
             <div class="col-md-12 text-center">
                 <button type="button" class="btn btn-primary btn-lg" id="start-button">Start</button>
             </div>
         </div>
 
-        <div class="row text-center">
-            <div class="col-md-12">
+        <!-- Placeholder for the timer user will be up against -->
+        <div class="row">
+            <div class="col-md-12 text-center">
                 <h3 id="timer"></h3>
             </div>
         </div>
 
+        <!-- placeholder for the questions the user will have to answer -->
         <div class="row">
             <div class="col-md-12 text-center">
                 <h3 id="question-placeholder"></h3>
             </div>
         </div>
 
+        <!-- placeholder for the answers the user will be choosing from -->
         <div class="row">
             <div class="col-md-12 text-center">
                 <div id="answers-placeholder"></div>
             </div>
         </div>
 
-
-
     </div>
-
-
 
     <!-- Added link to the jQuery Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

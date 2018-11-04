@@ -1,14 +1,34 @@
-.btn {
-    width:30%;
+body {
+    background-image: url("../images/background.jpg");
+    background-size: cover;
+    background-attachment: fixed;
 }
 
-img{
-    max-width: 30%;
+div{
+    text-shadow: -1px -1px 0 white,
+    1px -1px 0 white,
+    -1px 1px 0 white,
+    1px 1px 0 white;
+}
+img {
+    max-width: 50%;
     height: auto;
 }
 
-body{
-    background-image: url("../images/backgroud.jpg");
-    background-size: cover;
-    /* background-position: center; */
+.btn {
+    width:40%;
+}
+
+@media screen and (max-width:600px) {
+    .btn {
+        width: 100%;
+    }
+
+    img{
+        max-width: 100%;
+    }
+
+    body{
+        background-image: url("../images/background-vertical.jpg");      
+    }
 }
