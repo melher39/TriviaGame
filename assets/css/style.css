@@ -1,33 +1,47 @@
+/* background should will be exact window size and should not move by scrolling */
 body {
     background-image: url("../images/background.jpg");
     background-size: cover;
     background-attachment: fixed;
 }
 
+/* Added an outline around all of the text besides the buttons */
 div{
     text-shadow: -1px -1px 0 white,
     1px -1px 0 white,
     -1px 1px 0 white,
     1px 1px 0 white;
 }
+
+/* made gifs less wide without losing resolution */
 img {
     max-width: 50%;
     height: auto;
 }
 
+/* width of the buttons shrunk */
 .btn {
     width:40%;
 }
 
+/* at the breakpoint of 600px... */
 @media screen and (max-width:600px) {
+    /* let the buttons be full width*/
     .btn {
         width: 100%;
     }
 
+    /* gifs and trivia image are full width */
     img{
         max-width: 100%;
     }
 
+    /* set a background to make text easier to read on mobile devices */
+    h2{
+        background-color: #FFD90F;
+    }
+
+    /* change the background to a more mobile friendly and vertically-better looking image */
     body{
         background-image: url("../images/background-vertical.jpg");      
     }

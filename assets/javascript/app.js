@@ -8,6 +8,12 @@ var incorrectlyAnswered = 0;
 var unanswered = 0;
 // will keep track of what question the user is on
 var questionCounter = 0;
+// soundbyte when user selects right answer
+var winSound = new Audio("assets/sound/Homer - Woohoo!.mp3");
+// soundbyte when user selects wrong answer
+var loseSound = new Audio("assets/sound/doh1.mp3");
+// soundbyte when user runs out of time
+var noAnswer = new Audio("assets/sound/haha.mp3");
 // message that will be displayed on the result screen according to the user's answer selection
 var resultMessage;
 // setInterval for every question
@@ -17,7 +23,7 @@ var setTimeoutID;
 // will contain the question, possible answers, correct answer & gif displayed
 var questionAndAnswers = [
     {
-    question: "In what town do The Simpsons live in?",
+    question: "In what town do The Simpsons live?",
     possibleAnswers: ["Quahog", "Springfield", "Capital City", "Shelbyville"],
     correctAnswer: "Springfield",
     messageGif: "<img src='assets/images/springfield-small.gif'/>",
@@ -105,6 +111,7 @@ var timer = {
             clearInterval(setIntervalID);
             unanswered++;
             questionCounter++;
+            noAnswer.play();
         };
 
         // decrement the timer by 1 and display it on screen
@@ -245,6 +252,7 @@ function playGame(){
         // and increase the number of correct answers and the questionCounter
         correctlyAnswered++;
         questionCounter++;
+        winSound.play();
     }
     // else set the incorrect result message, show the bridgeMessage, clearInterval
     else{
@@ -254,6 +262,7 @@ function playGame(){
         // and increase the number of incorrectly answered questions and the questionCounter
         incorrectlyAnswered++;
         questionCounter++;
+        loseSound.play();
     }
 };
 
